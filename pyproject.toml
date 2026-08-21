@@ -1,0 +1,42 @@
+[project]
+name = "foc-mlx"
+version = "0.0.1"
+description = "Field Oriented Control transforms optimized for Apple Silicon."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "altair>=6.2",
+  "mlx>=0.32",
+  "polars[numpy]>=1.43",
+]
+
+[dependency-groups]
+dev = [
+  "pytest-cov>=7.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+preview = true
+line-length = 100
+
+[tool.ruff.lint]
+pydocstyle.convention = "google"
+extend-select = [
+  # subset of lint rules[1]
+  "ANN",  # flake8-annotations
+  "C90",  # mccabe
+  "D",  # pydocstyle
+  "DOC",  # pydoclint
+  "I",  # isort
+  "RET",  # flake8-return
+  "TD",  # flake8-todos
+]
+
+[tool.uv]
+preview-features = true
+
+# [1]: https://docs.astral.sh/ruff/rules

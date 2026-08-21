@@ -1,0 +1,45 @@
+[[repos]]
+repo = "https://github.com/hukkin/mdformat"
+rev = "1.0.0"
+hooks = [
+  {
+    id = "mdformat",
+    additional_dependencies = ["mdformat-footnote", "mdformat-gfm"],
+    priority = 0,
+  }
+]
+
+[[repos]]
+repo = "https://github.com/astral-sh/ruff-pre-commit"
+rev = "v0.16.3"
+hooks = [
+  { id = "ruff-check" },
+  { id = "ruff-format" },
+]
+
+[[repos]]
+repo = "https://github.com/astral-sh/ty-pre-commit"
+rev = "v0.0.73"
+hooks = [
+  { id = "ty" },
+]
+
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "check-added-large-files" },
+]
+
+[[repos]]
+repo = "local"
+hooks = [
+  {
+    id = "pytest",
+    name = "pytest",
+    entry = "uv run pytest -q",
+    language = "system",
+    types = ["python"],
+    pass_filenames = false,
+    priority = 0,
+  },
+]
