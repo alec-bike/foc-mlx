@@ -1,6 +1,6 @@
 [project]
 name = "foc-mlx"
-version = "0.0.1"
+version = "0.1.0"
 description = "Field Oriented Control transforms optimized for Apple Silicon."
 readme = "README.md"
 requires-python = ">=3.12"
