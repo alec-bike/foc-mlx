@@ -20,7 +20,9 @@ Sync local dependencies:
 uv sync
 ```
 
-### Example
+The core transforms can be found in `src/foc-mlx/core.py`. Refer also to the python [API](docs/api.md) which documents all public functions.
+
+## Examples
 
 Calculate the Clarke transform:
 
@@ -45,8 +47,6 @@ plot_df(df).save("foc_waveforms.html")
 ```
 
 ![FOC Waveforms.](docs/foc_waveforms.svg)
-
-Refer to the [API](docs/api.md) documentation for the full python function reference.
 
 ## Development
 

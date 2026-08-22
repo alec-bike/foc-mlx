@@ -1,4 +1,4 @@
-"""Example script for Field Oriented Control core transforms.
+"""Simulation of Field Oriented Control core transforms.
 
 Use the core transforms to convert between 3-phase motor and 2-phase direct-quadrature space.
 """
