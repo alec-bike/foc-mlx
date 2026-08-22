@@ -8,18 +8,18 @@ Modules:
 - [plot](#plot) – plotting functions.
 - [sim](#sim) – simulation example script.
 
-## foc {#core}
+## core
 
 Field Oriented Control core transforms.
 
 Functions:
 
-- [clarke](#core-clarke) – Clarke Transform, power variant form.
-- [duty_cycle](#core-dutycycle) – convert phase voltage to duty cycle.
-- [inv_clarke](#core-invclarke) – Inverse Clarke Transform, power variant form.
-- [inv_park](#core-invpark) – Inverse Park Transform.
-- [park](#core-park) – Park Transform.
-- [svm](#core-svm) – Space Vector Modulation (SVM).
+- [clarke](#coreclarke) – Clarke Transform, power variant form.
+- [duty_cycle](#coreduty_cycle) – convert phase voltage to duty cycle.
+- [inv_clarke](#coreinv_clarke) – Inverse Clarke Transform, power variant form.
+- [inv_park](#coreinv_park) – Inverse Park Transform.
+- [park](#corepark) – Park Transform.
+- [svm](#coresvm) – Space Vector Modulation (SVM).
 
 Usage:
 
@@ -28,7 +28,7 @@ from bikelib.foc import clarke, duty_cycle, inv_clarke, inv_park, park, svm
 from mlx.core import array
 ```
 
-### core.clarke {#core-clarke}
+### core.clarke
 
 ```python
 i_alpha, i_beta = clarke(i_a, i_b)
@@ -53,7 +53,7 @@ Raises:
 
 - `ValueError` – invalid array size.
 
-### core.duty_cycle {#core-dutycycle}
+### core.duty_cycle
 
 ```python
 t = duty_cycle(v, v_bus)
@@ -80,7 +80,7 @@ Notes:
 - Output duty cycle `t` is between 0 and 1 (0.5 is zero output voltage).
 - Absolute input voltages greater than `v_bus` are clipped.
 
-### core.inv_clarke {#core-invclarke}
+### core.inv_clarke
 
 ```python
 v_a, v_b, v_c = inv_clarke(v_alpha, v_beta)
@@ -103,7 +103,7 @@ Raises:
 
 - `ValueError` – invalid array size.
 
-### core.inv_park {#core-invpark}
+### core.inv_park
 
 ```python
 v_alpha, v_beta = inv_park(v_d, v_q, theta)
@@ -126,7 +126,7 @@ Raises:
 
 - `ValueError` – invalid array size.
 
-### core.park {#core-park}
+### core.park
 
 ```python
 i_d, i_q = park(i_alpha, i_beta, theta)
@@ -151,7 +151,7 @@ Raises:
 
 - `ValueError` – invalid array size.
 
-### core.svm {#core-svm}
+### core.svm
 
 ```python
 t_a, t_b, t_c = svm(v_a, v_b, v_c, v_bus)
@@ -178,13 +178,13 @@ Raises:
 
 - `ValueError` – invalid array size.
 
-## plot {#plot}
+## plot
 
 Plotting functions for motor performance analysis.
 
 Functions:
 
-- [plot_foc](#plot-foc) – plot the FOC waveforms.
+- [plot_foc](#plotfoc) – plot the FOC waveforms.
 
 Usage:
 
@@ -192,7 +192,7 @@ Usage:
 from foc_mlx.plot import plot_foc
 ```
 
-### plot.plot_foc {#plot-foc}
+### plot.plot_foc
 
 ```python
 cht = plot_foc()
@@ -204,19 +204,21 @@ Returns:
 
 - `cht: Chart` – line plot of waveforms.
 
-## sim {#sim-control}
+## sim
 
 Example script for FOC waveforms.
 
 Functions:
 
-- [control](#sim-control) – simulate FOC waveforms.
+- [control](#simcontrol) – simulate FOC waveforms.
 
 Usage:
 
 ```python
 from foc_mlx.sim import control
 ```
+
+## sim.control
 
 ```python
 df = control()
