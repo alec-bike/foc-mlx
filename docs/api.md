@@ -4,9 +4,8 @@ Field Oriented Control (FOC) python function reference.
 
 Modules:
 
-- [core](#core) – FOC core transforms.
-- [plot](#plot) – plotting functions.
-- [sim](#sim) – simulation example script.
+- [core](#core) – compute FOC core transforms.
+- [sim](#sim) – simulate and visualize FOC waveforms.
 
 ## core
 
@@ -178,47 +177,22 @@ Raises:
 
 - `ValueError` – invalid array size.
 
-## plot
-
-Plotting functions for motor performance analysis.
-
-Functions:
-
-- [plot_foc](#plotfoc) – plot the FOC waveforms.
-
-Usage:
-
-```python
-from foc_mlx.plot import plot_foc
-```
-
-### plot.plot_foc
-
-```python
-cht = plot_foc()
-```
-
-Plot FOC waveforms.
-
-Returns:
-
-- `cht: Chart` – line plot of waveforms.
-
 ## sim
 
-Example script for FOC waveforms.
+Example script to simulate and plot FOC waveforms.
 
 Functions:
 
 - [control](#simcontrol) – simulate FOC waveforms.
+- [plot](#simplot) – plot a DataFrame of waveforms.
 
 Usage:
 
 ```python
-from foc_mlx.sim import control
+from foc_mlx.sim import control, plot
 ```
 
-## sim.control
+### sim.control
 
 ```python
 df = control()
@@ -229,3 +203,20 @@ Simulate FOC waveforms.
 Returns:
 
 - `df: DataFrame` – DataFrame of FOC waveforms.
+
+### sim.plot
+
+```python
+cht = plot(df)
+cht.save("waveforms.html")
+```
+
+Plot FOC waveforms.
+
+Parameters:
+
+- `df: DataFrame` – DataFrame of FOC waveforms.
+
+Returns:
+
+- `cht: Chart` – line plot of waveforms.

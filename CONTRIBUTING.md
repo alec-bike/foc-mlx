@@ -1,6 +1,6 @@
 # Contributing
 
-This document describes the tools required to test the `foc-mlx` codebase.
+This document describes the steps to contribute to the `foc-mlx` codebase.
 
 ## Development Setup
 
@@ -25,6 +25,12 @@ uv sync
 
 > [!TIP]
 > `uv sync` will also download python and create a virtual environment, if needed.
+
+Install pre-commit hooks[^2]:
+
+```sh
+prek install
+```
 
 ## Tool Setup
 
@@ -51,17 +57,16 @@ Create a new git branch to make changes to the repository:
 git switch -c <your-branch-name>
 ```
 
-Install and test pre-commit hooks[^2]:
+Run all tests on the codebase:
 
 ```sh
-prek install
 prek -a
 ```
 
-If the hooks all pass then the changes can be pushed to the remote repository. Follow the usual GitHub PR process to merge changes.
+If the hooks all pass, push changes to the remote repository, then follow the GitHub process to submit a PR for your branch.
 
 <!-- footnotes -->
 
-[^1]: Tools are installed in the `$PATH` and most can detect a python virtual environment. This is handy for use across multiple projects and applications.
+[^2]: See `prek.toml` for configured hooks. When installed, these hooks are run at each commit on staged files.
 
-[^2]: See `prek.toml` for configured hooks. When installed, pre-commit hooks are run at each commit on staged files.
+[^1]: Tools are installed in the `$PATH` and most can detect a python virtual environment. This is handy for use across multiple projects and applications.
