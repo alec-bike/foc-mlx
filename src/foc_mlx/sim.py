@@ -1,11 +1,14 @@
-"""Simulation of Field Oriented Control core transforms.
+"""Simulate and visualize Field Oriented Control core transforms.
 
-Use the core transforms to convert between 3-phase motor and 2-phase direct-quadrature space.
+Run the core transforms to convert between 3-phase motor and 2-phase direct-quadrature space.
+Use polars DataFrame and Altair Chart to plot the waveforms.
 """
 
+from altair import Chart, ConcatChart, HConcatChart
 from mlx.core import linspace, pi, sin
 from numpy import stack
-from polars import DataFrame
+from polars import DataFrame, col
+from polars.selectors import matches
 
 from .core import clarke, inv_clarke, inv_park, park, svm
 
@@ -62,4 +65,51 @@ def control(v_bus: float = 48.0, i_pk: float = 10.0, k_p: float = 5.0) -> DataFr
     return DataFrame(
         data=stack([theta, i_a, i_b, v_d, v_q, t_a, t_b, t_c]),
         schema=["theta", "i_a", "i_b", "V_d", "V_q", "T_a", "T_b", "T_c"],
+    )
+
+
+def plot(df: DataFrame) -> ConcatChart | HConcatChart:
+    """Plot DataFrame waveforms.
+
+    Returns:
+        Concatenated line Chart.
+    """
+    # Add i_c column using 3-phase relation: i_a + i_b + i_c == 0.
+    df = df.with_columns([(-col("i_a") - col("i_b")).alias("i_c")])
+
+    return (
+        _line_chart(df, "i[_].", "theta", "current (Amp)")
+        | _line_chart(df, "V[_].", "theta", "voltage (Volt)")
+        | _line_chart(df, "T[_].", "theta", "duty cycle")
+    )
+
+
+def _line_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
+    """Helper function to generate Chart from DataFrame.
+
+    Match columns by regex selector, unpivot from wide to long format.
+    Generate line plot with index (x) vs matched columns (y).
+
+    Parameters:
+        df: data in DataFrame.
+        regex: column selector string.
+        idx: index column string.
+        ylab: plot y-label string.
+
+    Returns:
+        line plot Chart.
+    """
+    grplab: str = "var"  # group-by label
+
+    return (
+        Chart(
+            df.unpivot(
+                on=matches(regex),
+                index=idx,
+                value_name=ylab,
+                variable_name=grplab,
+            ),
+        )
+        .mark_line(tooltip=True)
+        .encode(x=idx, y=ylab, color=grplab)  # ty: ignore
     )

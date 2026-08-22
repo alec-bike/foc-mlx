@@ -4,6 +4,7 @@ import pytest
 from mlx.core import array, isclose, pi, sin, sqrt
 
 from foc_mlx import clarke, duty_cycle, inv_clarke, inv_park, park, svm
+from foc_mlx.sim import control, plot
 
 ZERO = array(0)
 ONE = array(1)
@@ -127,3 +128,9 @@ def test_svm() -> None:
     # ensure assertion error raised for empty input array
     with pytest.raises(ValueError):
         _ = svm(EMPTY, v_b, v_c, v_bus)
+
+
+def test_scripts() -> None:
+    """Run the example script."""
+    df = control()
+    _ = plot(df)
