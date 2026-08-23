@@ -3,8 +3,7 @@
 import pytest
 from mlx.core import array, isclose, pi, sin, sqrt
 
-from foc_mlx import clarke, duty_cycle, inv_clarke, inv_park, park, svm
-from foc_mlx.sim import control, plot
+from foc_mlx import clarke, control, duty_cycle, inv_clarke, inv_park, park, plot, svm
 
 ZERO = array(0)
 ONE = array(1)

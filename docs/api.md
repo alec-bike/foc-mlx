@@ -23,7 +23,7 @@ Functions:
 Usage:
 
 ```python
-from bikelib.foc import clarke, duty_cycle, inv_clarke, inv_park, park, svm
+from foc_mlx import clarke, duty_cycle, inv_clarke, inv_park, park, svm
 from mlx.core import array
 ```
 
@@ -189,7 +189,7 @@ Functions:
 Usage:
 
 ```python
-from foc_mlx.sim import control, plot
+from foc_mlx import control, plot
 ```
 
 ### sim.control
@@ -199,6 +199,12 @@ df = control()
 ```
 
 Simulate FOC waveforms.
+
+Parameters:
+
+- `v_bus: float` – bus voltage (Volt).
+- `i_pk: float` – peak sensed current (Amp).
+- `k_p: float` – gain (Volt/Amp).
 
 Returns:
 
@@ -219,4 +225,4 @@ Parameters:
 
 Returns:
 
-- `cht: Chart` – line plot of waveforms.
+- `cht: ConcatChart | HConcatChart` – line plot of waveforms.

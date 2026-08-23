@@ -8,7 +8,7 @@ Fork the `foc-mlx` repository on GitHub and clone locally:
 
 ```sh
 git clone git@github.com:YOUR-USERNAME/foc-mlx.git
-cd motion
+cd foc-mlx
 ```
 
 Project dependencies are configured in `pyproject.toml`:

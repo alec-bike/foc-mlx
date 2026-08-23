@@ -8,7 +8,7 @@ Clone the `foc-mlx` repository:
 
 ```sh
 git clone git@github.com:alec-bike/foc-mlx.git
-cd motion
+cd foc-mlx
 ```
 
 > [!TIP]
@@ -20,7 +20,7 @@ Sync local dependencies:
 uv sync
 ```
 
-The core transforms can be found in `src/foc-mlx/core.py`. Refer also to the python [API](docs/api.md) which documents all public functions.
+The core transforms can be found in `src/foc_mlx/core.py`. Refer also to the python [API](docs/api.md) which documents all public functions.
 
 ## Examples
 
@@ -28,7 +28,7 @@ Calculate the Clarke transform:
 
 ```python
 from mlx.core import linspace, sin, pi
-from foc_mlx.core import clarke
+from foc_mlx import clarke
 
 theta = linspace(0, 2 * pi, 1000)  # electrical angle in rad
 i_a = sin(theta)  # phase currents in Amp
@@ -39,11 +39,10 @@ i_alpha, i_beta = clarke(i_a, i_b)
 Simulate and plot the FOC waveforms:
 
 ```python
-from foc_mlx.sim import control
-from foc_mlx.plot import plot_df
+from foc_mlx import control, plot
 
 df = control()
-plot_df(df).save("foc_waveforms.html")
+plot(df).save("foc_waveforms.html")
 ```
 
 ![FOC Waveforms.](docs/foc_waveforms.svg)
