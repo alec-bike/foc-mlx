@@ -1,4 +1,4 @@
-"""Simulate and visualize Field Oriented Control core transforms.
+"""Simulate and plot Field Oriented Control core transforms.
 
 Run the core transforms to convert between 3-phase motor and 2-phase direct-quadrature space.
 Use polars DataFrame and Altair Chart to plot the waveforms.
@@ -39,7 +39,7 @@ def control(v_bus: float = 48.0, i_pk: float = 10.0, k_p: float = 5.0) -> DataFr
         k_p: gain (Volt/Amp)
 
     Returns:
-        data: waveform DataFrame.
+        polars DataFrame.
     """
     # Simulate 3-phase sensed phase currents (i_a + i_b + i_c = 0).
     theta = linspace(0, 2 * pi, 100)  # elec angle (rad)
@@ -68,22 +68,6 @@ def control(v_bus: float = 48.0, i_pk: float = 10.0, k_p: float = 5.0) -> DataFr
     )
 
 
-def plot(df: DataFrame) -> ConcatChart | HConcatChart:
-    """Plot DataFrame waveforms.
-
-    Returns:
-        Concatenated line Chart.
-    """
-    # Add i_c column using 3-phase relation: i_a + i_b + i_c == 0.
-    df = df.with_columns([(-col("i_a") - col("i_b")).alias("i_c")])
-
-    return (
-        _line_chart(df, "i[_].", "theta", "current (Amp)")
-        | _line_chart(df, "V[_].", "theta", "voltage (Volt)")
-        | _line_chart(df, "T[_].", "theta", "duty cycle")
-    )
-
-
 def _line_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
     """Helper function to generate Chart from DataFrame.
 
@@ -97,7 +81,7 @@ def _line_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
         ylab: plot y-label string.
 
     Returns:
-        line plot Chart.
+        altair Chart.
     """
     grplab: str = "var"  # group-by label
 
@@ -112,4 +96,23 @@ def _line_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
         )
         .mark_line(tooltip=True)
         .encode(x=idx, y=ylab, color=grplab)  # ty: ignore
+    )
+
+
+def plot(df: DataFrame) -> ConcatChart | HConcatChart:
+    """Plot FOC waveforms from DataFrame.
+
+    Parameters:
+        df: data in DataFrame.
+
+    Returns:
+        altair concatenated Chart.
+    """
+    # Add i_c column using 3-phase relation: i_a + i_b + i_c == 0.
+    df = df.with_columns([(-col("i_a") - col("i_b")).alias("i_c")])
+
+    return (
+        _line_chart(df, "i[_].", "theta", "current (Amp)")
+        | _line_chart(df, "V[_].", "theta", "voltage (Volt)")
+        | _line_chart(df, "T[_].", "theta", "duty cycle")
     )
