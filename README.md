@@ -20,9 +20,18 @@ Sync local dependencies:
 uv sync
 ```
 
-The core transforms can be found in `src/foc_mlx/core.py`. Refer also to the python [API](docs/api.md) which documents all public functions.
-
 ## Examples
+
+Simulate and plot the FOC waveforms:
+
+```python
+from foc_mlx import control, plot
+
+df = control()  # polars DataFrame of FOC waveforms
+plot(df)
+```
+
+![FOC Waveforms.](docs/foc_waveforms.svg)
 
 Calculate the Clarke transform:
 
@@ -36,20 +45,10 @@ i_b = sin(theta - 2 * pi / 3)
 i_alpha, i_beta = clarke(i_a, i_b)
 ```
 
-Simulate and plot the FOC waveforms:
+## Next Steps
 
-```python
-from foc_mlx import control, plot
-
-df = control()
-plot(df).save("foc_waveforms.html")
-```
-
-![FOC Waveforms.](docs/foc_waveforms.svg)
-
-## Development
-
-To test and develop the codebase, refer to [CONTRIBUTING.md](CONTRIBUTING.md).
+Refer to the python [API](docs/api.md) which documents `foc-mlx` public functions.
+To contribute to the codebase, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <!-- links -->
 
