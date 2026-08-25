@@ -4,8 +4,7 @@ Field Oriented Control (FOC) python function reference.
 
 Modules:
 
-- [core](#core) – compute FOC core transforms.
-- [sim](#sim) – simulate and visualize FOC waveforms.
+- [core](#core) – FOC core transforms.
 
 ## core
 
@@ -176,53 +175,3 @@ Returns:
 Raises:
 
 - `ValueError` – invalid array size.
-
-## sim
-
-Example script to simulate and plot FOC waveforms.
-
-Functions:
-
-- [control](#simcontrol) – simulate FOC waveforms.
-- [plot](#simplot) – plot a DataFrame of waveforms.
-
-Usage:
-
-```python
-from foc_mlx import control, plot
-```
-
-### sim.control
-
-```python
-df = control()
-```
-
-Simulate FOC waveforms.
-
-Parameters:
-
-- `v_bus: float` – bus voltage (Volt).
-- `i_pk: float` – peak sensed current (Amp).
-- `k_p: float` – gain (Volt/Amp).
-
-Returns:
-
-- `df: DataFrame` – DataFrame of FOC waveforms.
-
-### sim.plot
-
-```python
-cht = plot(df)
-cht.save("waveforms.html")
-```
-
-Plot FOC waveforms.
-
-Parameters:
-
-- `df: DataFrame` – DataFrame of FOC waveforms.
-
-Returns:
-
-- `cht: ConcatChart | HConcatChart` – line plot of waveforms.

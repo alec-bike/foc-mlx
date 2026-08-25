@@ -24,17 +24,20 @@ uv sync
 ```
 
 > [!TIP]
-> `uv sync` will also download python and create a virtual environment, if needed.
+> `uv sync` will also download python and create a virtual environment (if needed).
 
-Install pre-commit hooks[^2]:
+Install pre-commit hooks defined in `prek.toml`:
 
 ```sh
 prek install
 ```
 
+> [!NOTE]
+> When installed, these hooks run at each commit on staged files.
+
 ## Tool Setup
 
-The following system tools[^1] are used to manage the codebase:
+The following system tools are used to manage the codebase:
 
 - prek to check for issues at commit;
 - mdformat to format markdown documents;
@@ -44,10 +47,12 @@ To install tools:
 
 ```sh
 uv tool install prek
-uv tool install mdformat -w mdformat-footnote -w mdformat-gfm
+uv tool install mdformat -w mdformat-gfm
 uv tool install ruff
 uv tool install ty
 ```
+
+Tools are installed in the `$PATH` and most can detect a python virtual environment. This is handy for use across multiple projects and applications.
 
 ## Branch and Test
 
@@ -57,16 +62,10 @@ Create a new git branch to make changes to the repository:
 git switch -c <your-branch-name>
 ```
 
-Run all tests on the codebase:
+Check your changes by running all tests on the codebase:
 
 ```sh
 prek -a
 ```
 
-If the hooks all pass, push changes to the remote repository, then follow the GitHub process to submit a PR for your branch.
-
-<!-- footnotes -->
-
-[^2]: See `prek.toml` for configured hooks. When installed, these hooks are run at each commit on staged files.
-
-[^1]: Tools are installed in the `$PATH` and most can detect a python virtual environment. This is handy for use across multiple projects and applications.
+If the hooks all pass, push changes to the remote repository. Then follow the GitHub process to submit a PR for your branch.
