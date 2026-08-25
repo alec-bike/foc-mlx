@@ -22,13 +22,16 @@ uv sync
 
 ## Examples
 
-Simulate and plot the FOC waveforms:
+> [!TIP]
+> Visualizing plots works best in an interactive notebook such as Colab or Juypter.
+
+Run the example script to simulate and plot FOC waveforms:
 
 ```python
-from foc_mlx import control, plot
+from foc_mlx.sim import control, plot
 
 df = control()  # polars DataFrame of FOC waveforms
-plot(df)
+plot(df).show()
 ```
 
 ![FOC Waveforms.](docs/foc_waveforms.svg)
