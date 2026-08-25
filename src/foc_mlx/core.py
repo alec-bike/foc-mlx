@@ -4,9 +4,9 @@ Power variant forms of the Park/Clarke transforms and Space Vector Modulation.
 """
 
 import mlx.core as mx
-from mlx.core import array, clip, cos, sin, sqrt, stack
+from mlx.core import array
 
-SQRT3: array = sqrt(array(3.0))
+SQRT3: array = mx.sqrt(array(3.0))
 
 
 def clarke(i_a: array, i_b: array) -> tuple[array, array]:
@@ -56,8 +56,8 @@ def park(i_alpha: array, i_beta: array, theta: array) -> tuple[array, array]:
         msg = "Invalid array size."
         raise ValueError(msg)
 
-    i_d = i_alpha * cos(theta) + i_beta * sin(theta)
-    i_q = -i_alpha * sin(theta) + i_beta * cos(theta)
+    i_d = i_alpha * mx.cos(theta) + i_beta * mx.sin(theta)
+    i_q = -i_alpha * mx.sin(theta) + i_beta * mx.cos(theta)
     return i_d, i_q
 
 
@@ -105,8 +105,8 @@ def inv_park(v_d: array, v_q: array, theta: array) -> tuple[array, array]:
         msg = "Invalid array size."
         raise ValueError(msg)
 
-    v_alpha = v_d * cos(theta) - v_q * sin(theta)
-    v_beta = v_d * sin(theta) + v_q * cos(theta)
+    v_alpha = v_d * mx.cos(theta) - v_q * mx.sin(theta)
+    v_beta = v_d * mx.sin(theta) + v_q * mx.cos(theta)
     return v_alpha, v_beta
 
 
@@ -134,7 +134,7 @@ def svm(v_a: array, v_b: array, v_c: array, v_bus: float) -> tuple[array, array,
         raise ValueError(msg)
 
     # calculate neutral-point voltages
-    v = stack([v_a, v_b, v_c])
+    v = mx.stack([v_a, v_b, v_c])
     v_np = (mx.max(v, 0) + mx.min(v, 0)) / 2.0
 
     # shift voltages and convert to duty cycle
@@ -173,4 +173,4 @@ def duty_cycle(v: array, v_bus: float) -> array:
 
     # shift input voltage and scale by bus voltage
     t = (1 + v / v_bus) / 2
-    return clip(t, 0, 1)  # clip to 0-1
+    return mx.clip(t, 0, 1)  # clip to 0-1
