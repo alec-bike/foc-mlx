@@ -22,20 +22,6 @@ uv sync
 
 ## Examples
 
-> [!TIP]
-> Visualizing plots works best in an interactive notebook such as Colab or Juypter.
-
-Run the example script to simulate and plot FOC waveforms:
-
-```python
-from foc_mlx.sim import control, plot
-
-df = control()  # polars DataFrame of FOC waveforms
-plot(df).show()
-```
-
-![FOC Waveforms.](docs/foc_waveforms.svg)
-
 Calculate the Clarke transform:
 
 ```python
@@ -47,6 +33,20 @@ i_a = sin(theta)  # phase currents in Amp
 i_b = sin(theta - 2 * pi / 3)
 i_alpha, i_beta = clarke(i_a, i_b)
 ```
+
+Plot the FOC waveforms (see `foc_ex.py` script in the `examples` folder):
+
+```python
+from foc_ex import sim, plot
+
+df = sim()  # returns a polars DataFrame
+plot(df)  # shows an altair Chart
+```
+
+![FOC Waveforms.](docs/foc_waveforms.svg)
+
+> [!TIP]
+> Running the example scripts works best in an interactive notebook such as Colab or Juypter.
 
 ## Next Steps
 
