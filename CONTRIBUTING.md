@@ -11,9 +11,11 @@ git clone git@github.com:YOUR-USERNAME/foc-mlx.git
 cd foc-mlx
 ```
 
-Project dependencies are configured in `pyproject.toml`. The only core dependency is `mlx`. Additional dev dependencies are:
+Project dependencies are configured in `pyproject.toml`. The only core dependency is `mlx`.
 
-- polars for data handling;
+Additional dev dependencies are:
+
+- polars for DataFrames;
 - altair for plotting;
 - pytest for testing;
 
