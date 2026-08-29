@@ -36,7 +36,7 @@ i_b = sin(theta - 2 * pi / 3)
 i_alpha, i_beta = clarke(i_a, i_b)
 ```
 
-Example of plotting the FOC waveforms (see `foc_ex.py` script in `examples` folder):
+Example of plotting the FOC waveforms:
 
 ```sh
 uv run examples/foc_ex.py
