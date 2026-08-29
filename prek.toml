@@ -4,7 +4,7 @@ rev = "1.0.0"
 hooks = [
   {
     id = "mdformat",
-    additional_dependencies = ["mdformat-footnote", "mdformat-gfm"],
+    additional_dependencies = ["mdformat-gfm"],
     priority = 0,
   }
 ]
