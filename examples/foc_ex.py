@@ -6,7 +6,7 @@ Use polars DataFrame and Altair Chart to plot FOC waveforms.
 
 import mlx.core as mx
 import numpy as np
-from altair import Chart, ConcatChart, HConcatChart, renderers
+from altair import Chart, renderers
 from polars import DataFrame, col
 from polars.selectors import matches
 
@@ -99,27 +99,21 @@ def sim() -> DataFrame:
     )
 
 
-def plot(df: DataFrame) -> ConcatChart | HConcatChart:
-    """Plot FOC waveforms from DataFrame.
+def plot() -> None:
+    """Plot FOC waveforms."""
+    df = sim()  # generate waveforms
 
-    Parameters:
-        df: data in DataFrame.
-
-    Returns:
-        altair concatenated Chart.
-    """
     # Add i_c column using 3-phase relation: i_a + i_b + i_c == 0.
     df = df.with_columns([(-col("i_a") - col("i_b")).alias("i_c")])
 
-    return (
+    (
         _line_chart(df, "i[_].", "theta", "current (Amp)")
         | _line_chart(df, "V[_].", "theta", "voltage (Volt)")
         | _line_chart(df, "T[_].", "theta", "duty cycle")
-    )
+    ).show()
 
 
 if __name__ == "__main__":
-    # Generate plots and display as interactive html in browser
+    # Display plots as interactive html in browser
     renderers.enable("browser")
-    df = sim()
-    plot(df).show()
+    plot()

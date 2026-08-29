@@ -24,13 +24,6 @@ Refer to the python [API](docs/api.md) which documents `foc-mlx` public function
 
 ## Examples
 
-Run an interactive python shell from the `examples` folder:
-
-```sh
-cd examples
-uv run python
-```
-
 Example of calculating the Clarke transform:
 
 ```python
@@ -43,13 +36,10 @@ i_b = sin(theta - 2 * pi / 3)
 i_alpha, i_beta = clarke(i_a, i_b)
 ```
 
-Example of plotting the FOC waveforms:
+Example of plotting the FOC waveforms (see `foc_ex.py` script in `examples` folder):
 
-```python
-from foc_ex import sim, plot
-
-df = sim()  # returns a polars DataFrame
-plot(df)  # shows an altair Chart
+```sh
+uv run examples/foc_ex.py
 ```
 
 ![FOC Waveforms.](docs/foc_waveforms.svg)
