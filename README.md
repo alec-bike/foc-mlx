@@ -20,9 +20,11 @@ Sync local dependencies:
 uv sync
 ```
 
+Refer to the python [API](docs/api.md) which documents `foc-mlx` public functions.
+
 ## Examples
 
-Calculate the Clarke transform:
+Example of calculating the Clarke transform:
 
 ```python
 from mlx.core import linspace, sin, pi
@@ -34,23 +36,19 @@ i_b = sin(theta - 2 * pi / 3)
 i_alpha, i_beta = clarke(i_a, i_b)
 ```
 
-Plot the FOC waveforms (see `foc_ex.py` script in the `examples` folder):
+Example of plotting the FOC waveforms:
 
-```python
-from foc_ex import sim, plot
-
-df = sim()  # returns a polars DataFrame
-plot(df)  # shows an altair Chart
+```sh
+uv run examples/foc_ex.py
 ```
 
 ![FOC Waveforms.](docs/foc_waveforms.svg)
 
 > [!TIP]
-> Running the example scripts works best in an interactive notebook such as Colab or Juypter.
+> Running the examples works best in an interactive notebook such as Colab or Jupyter.
 
 ## Next Steps
 
-Refer to the python [API](docs/api.md) which documents `foc-mlx` public functions.
 To contribute to the codebase, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <!-- links -->
