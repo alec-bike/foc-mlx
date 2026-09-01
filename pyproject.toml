@@ -11,7 +11,7 @@ dependencies = ["mlx>=0.32.2"]
 [dependency-groups]
 dev = [
   "altair>=6.2.2",
-  "polars[numpy]>=1.44.1",
+  "polars[numpy]>=2.0.0rc1",
   "pytest-cov>=7.1.0",
 ]
 
