@@ -70,4 +70,4 @@ Check your changes by running all tests on the codebase:
 prek -a
 ```
 
-If the hooks all pass, push changes to the remote repository. Then follow the GitHub process to submit a PR for your branch.
+If the hooks all pass, push changes to the remote repository and follow the GitHub process to submit a PR for your branch.
