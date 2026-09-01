@@ -24,7 +24,7 @@ Refer to the python [API](docs/api.md) which documents `foc-mlx` public function
 
 ## Examples
 
-Example of calculating the Clarke transform:
+Calculate the Clarke transform:
 
 ```python
 from mlx.core import linspace, sin, pi
@@ -34,18 +34,19 @@ theta = linspace(0, 2 * pi, 1000)  # electrical angle in rad
 i_a = sin(theta)  # phase currents in Amp
 i_b = sin(theta - 2 * pi / 3)
 i_alpha, i_beta = clarke(i_a, i_b)
+print(i_alpha)
 ```
 
-Example of plotting the FOC waveforms:
+Plot FOC waveforms:
 
 ```sh
-uv run examples/foc_ex.py
+uv run examples/transforms.py
 ```
-
-![FOC Waveforms.](docs/foc_waveforms.svg)
 
 > [!TIP]
 > Running the examples works best in an interactive notebook such as Colab or Jupyter.
+
+![FOC Waveforms.](docs/foc_waveforms.svg)
 
 ## Next Steps
 

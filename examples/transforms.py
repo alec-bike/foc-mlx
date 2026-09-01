@@ -1,7 +1,8 @@
-"""Example script for Field Oriented Control core transforms.
+"""Example script to plot Field Oriented Control (FOC) core transforms.
 
-Run the core transforms to convert between 3-phase motor and 2-phase direct-quadrature space.
-Use polars DataFrame and Altair Chart to plot FOC waveforms.
+Run the core transforms to convert between 3-phase motor space and
+2-phase direct-quadrature (DQ) space. Use polars DataFrame and Altair Chart
+to plot the resultant waveforms.
 """
 
 import mlx.core as mx
@@ -39,6 +40,7 @@ def _line_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
                 variable_name=grplab,
             ),
         )
+        .interactive()
         .mark_line(tooltip=True)
         .encode(x=idx, y=ylab, color=grplab)  # ty: ignore
     )
@@ -108,8 +110,8 @@ def plot() -> None:
 
     (
         _line_chart(df, "i[_].", "theta", "current (Amp)")
-        | _line_chart(df, "V[_].", "theta", "voltage (Volt)")
-        | _line_chart(df, "T[_].", "theta", "duty cycle")
+        & _line_chart(df, "V[_].", "theta", "voltage (Volt)")
+        & _line_chart(df, "T[_].", "theta", "duty cycle")
     ).show()
 
 
