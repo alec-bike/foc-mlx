@@ -46,11 +46,11 @@ uv run examples/transforms.py
 > [!TIP]
 > Running the examples works best in an interactive notebook such as Colab or Jupyter.
 
-![FOC Waveforms.](docs/foc_waveforms.svg)
+![FOC Waveforms.](docs/transforms.svg)
 
 ## Next Steps
 
-To contribute to the codebase, see [CONTRIBUTING.md](CONTRIBUTING.md).
+To contribute to the codebase, see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 <!-- links -->
 
