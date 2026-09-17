@@ -25,16 +25,17 @@ jobs:
         run: |
           uv sync
           uv pip install mlx[cpu]
+          uv pip install ruff ty
 
       - name: ruff
         run: |
-          uvx ruff check
-          uvx ruff format
+          uv run ruff check
+          uv run ruff format
 
       - name: ty
         run: |
-          uvx ty check
+          uv run ty check
 
       - name: pytest
         run: |
-          uv run pytest --cov
+          uv run pytest
