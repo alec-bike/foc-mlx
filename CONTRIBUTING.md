@@ -28,28 +28,16 @@ uv sync
 > [!TIP]
 > `uv sync` will also download python and create a virtual environment (if needed).
 
-Install pre-commit hooks defined in `prek.toml`:
-
-```sh
-prek install
-```
-
-> [!NOTE]
-> When installed, these hooks run at each commit on staged files.
-
 ## Tool Setup
 
 The following system tools are used to manage the codebase:
 
-- prek to check for issues at commit;
 - mdformat to format markdown documents;
 - ruff and ty to check python code.
 
 To install tools:
 
 ```sh
-uv tool install prek
-uv tool install mdformat -w mdformat-gfm
 uv tool install ruff
 uv tool install ty
 ```
@@ -67,7 +55,10 @@ git switch -c <your-branch-name>
 Check your changes by running all tests on the codebase:
 
 ```sh
-prek -a
+uv run ruff check
+uv run ruff format
+uv run ty check
+uv run pytest --cov
 ```
 
-If the hooks all pass, push changes to the remote repository and follow the GitHub process to submit a PR for your branch.
+If these all pass, push changes to the remote repository and follow the GitHub process to submit a PR for your branch.
