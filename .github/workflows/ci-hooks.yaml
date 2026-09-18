@@ -1,0 +1,41 @@
+name: Linux CI testing
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  testing:
+    name: Setup and run hooks
+    runs-on: ubuntu-slim
+
+    steps:
+      - name: Checkout foc-mlx codebase
+        uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Setup python
+        run: uv python install
+
+      - name: Install dependencies
+        run: |
+          uv sync
+          uv pip install mlx[cpu]
+          uv pip install ruff ty
+
+      - name: ruff
+        run: |
+          uv run ruff check
+          uv run ruff format
+
+      - name: ty
+        run: |
+          uv run ty check
+
+      - name: pytest
+        run: |
+          uv run pytest
