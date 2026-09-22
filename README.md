@@ -14,10 +14,10 @@ cd foc-mlx
 > [!TIP]
 > This repository uses uv to manage dependencies. See [uv][1] for setup instructions.
 
-Sync local dependencies:
+Sync all local dependencies:
 
 ```sh
-uv sync
+uv sync --all-groups
 ```
 
 Refer to the python [API](docs/api.md) which documents `foc-mlx` public functions.

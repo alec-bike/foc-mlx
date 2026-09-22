@@ -148,11 +148,13 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "altair" },
-    { name = "polars", extra = ["numpy"] },
     { name = "pytest-cov" },
     { name = "ruff" },
     { name = "ty" },
+]
+plot = [
+    { name = "altair" },
+    { name = "polars", extra = ["numpy"] },
 ]
 
 [[package]]
