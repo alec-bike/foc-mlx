@@ -15,9 +15,9 @@ Project dependencies are configured in `pyproject.toml`. The only core dependenc
 
 Additional dev dependencies are:
 
-- polars for DataFrames;
-- altair for plotting;
-- pytest for testing;
+- altair and polars for the example plots;
+- ruff and ty for python linting and type checking;
+- pytest for testing.
 
 To sync dependencies:
 
@@ -27,17 +27,6 @@ uv sync
 
 > [!TIP]
 > `uv sync` will also download python and create a virtual environment (if needed).
-
-## Tool Setup
-
-The `ruff` (linter) and `ty` (type-checker) system tools are used to manage the codebase. To install:
-
-```sh
-uv tool install ruff
-uv tool install ty
-```
-
-These are installed in the `$PATH` and can detect a python virtual environment. This is handy for use across multiple projects and applications.
 
 ## Branch and Test
 

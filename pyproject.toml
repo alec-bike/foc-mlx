@@ -10,9 +10,11 @@ dependencies = ["mlx>=0.32.2"]
 
 [dependency-groups]
 dev = [
-  "altair>=6.2.2",
-  "polars[numpy]>=2.0.0rc1",
+  "altair>=6.3.0",
+  "polars[numpy]>=2.0.0rc2",
   "pytest-cov>=7.1.0",
+  "ruff>=0.16.8",
+  "ty>=0.0.83",
 ]
 
 [build-system]
@@ -38,5 +40,6 @@ extend-select = [
 
 [tool.uv]
 preview-features = true
+audit.malware-check = true
 
 # [1]: https://docs.astral.sh/ruff/rules
