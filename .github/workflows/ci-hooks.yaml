@@ -25,7 +25,6 @@ jobs:
         run: |
           uv sync
           uv pip install mlx[cpu]
-          uv pip install ruff ty
 
       - name: ruff
         run: |
