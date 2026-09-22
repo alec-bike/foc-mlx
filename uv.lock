@@ -146,10 +146,14 @@ dependencies = [
     { name = "mlx" },
 ]
 
-[package.dev-dependencies]
-dev = [
+[package.optional-dependencies]
+plot = [
     { name = "altair" },
     { name = "polars", extra = ["numpy"] },
+]
+
+[package.dev-dependencies]
+dev = [
     { name = "pytest-cov" },
     { name = "ruff" },
     { name = "ty" },
