@@ -11,21 +11,23 @@ git clone git@github.com:YOUR-USERNAME/foc-mlx.git
 cd foc-mlx
 ```
 
+### Dependencies
+
 Project dependencies are configured in `pyproject.toml`. The core dependency is `mlx`.
 
-Additional `dev` dependencies:
+Development dependencies for testing and CI:
 
-- ruff and ty for linting and type-checking;
-- pytest for regression testing.
+- `ruff` and `ty` for linting and type-checking; and
+- `pytest` for regression testing.
 
-Optional dependencies used in the examples:
+Optionally dependencies used by the example script:
 
-- altair and polars.
+- `altair` and `polars` for plotting.
 
 To sync all dependencies:
 
 ```sh
-uv sync --all-extras
+uv sync --all-groups
 ```
 
 ## Branch and Test
@@ -52,4 +54,4 @@ uv run pytest
 > uv pip install mlx-cpu
 > ```
 
-If these all pass, push changes to the remote repository and follow the GitHub process to submit a PR for your branch.
+If these all pass, push your branch to the remote repository and follow the GitHub process to submit a PR.

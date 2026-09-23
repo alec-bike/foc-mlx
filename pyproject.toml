@@ -8,17 +8,15 @@ license = "MIT"
 license-files = ["LICENSE"]
 dependencies = ["mlx>=0.32.2"]
 
-[project.optional-dependencies]
-plot = [
-  "altair>=6.3.0",
-  "polars[numpy]>=2.0.0rc2",
-]
-
 [dependency-groups]
 dev = [
   "pytest-cov>=7.1.0",
   "ruff>=0.16.8",
   "ty>=0.0.83",
+]
+plot = [
+  "altair>=6.3.0",
+  "polars[numpy]>=2.0.0rc2",
 ]
 
 [build-system]
