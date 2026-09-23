@@ -20,7 +20,7 @@ Sync local dependencies:
 uv sync
 ```
 
-Refer to the python [API](docs/api.md) which documents `foc-mlx` public functions.
+Refer to the [Function Reference](docs/api.md) which documents `foc-mlx` python API.
 
 ## Examples
 
