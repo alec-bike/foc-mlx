@@ -1,6 +1,6 @@
 # Contributing
 
-This document describes how to contribute to the `foc-mlx` project.
+This document describes how to develop and maintain the `foc-mlx` project.
 
 ## Development Setup
 
@@ -18,17 +18,14 @@ Project dependencies are configured in `pyproject.toml`. The core dependency is 
 Development dependencies:
 
 - `ruff` and `ty` for lint and type-check;
+- `pytest` for regression testing;
 - `taskipy` for task runners; and
-- `pytest` for regression testing.
-
-Optional dependencies:
-
 - `altair` and `polars` for the example plots.
 
 To sync all dependencies:
 
 ```sh
-uv sync --all-groups
+uv sync
 ```
 
 ## Branch and Test
