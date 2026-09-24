@@ -1,6 +1,6 @@
 # Function Reference
 
-Field Oriented Control (FOC) python API.
+Python API for the `foc-mlx` Field Oriented Control (FOC) transforms.
 
 Modules:
 
