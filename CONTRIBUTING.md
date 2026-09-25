@@ -15,14 +15,15 @@ cd foc-mlx
 
 Project dependencies are configured in `pyproject.toml`. The core dependency is `mlx`.
 
-Development dependencies for testing and CI:
+Development dependencies:
 
-- `ruff` and `ty` for linting and type-checking; and
+- `ruff` and `ty` for lint and type-check;
+- `taskipy` for task runners; and
 - `pytest` for regression testing.
 
-Optionally dependencies used by the example script:
+Optional dependencies:
 
-- `altair` and `polars` for plotting.
+- `altair` and `polars` for the example plots.
 
 To sync all dependencies:
 
@@ -38,13 +39,10 @@ Create a new git branch to make changes to the repository:
 git switch -c <your-branch-name>
 ```
 
-Check your changes by running CI tests locally:
+Check your changes by running CI tasks locally:
 
 ```sh
-uv run ruff check
-uv run ruff format
-uv run ty check
-uv run pytest
+uv run task all
 ```
 
 > [!TIP]
