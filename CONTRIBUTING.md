@@ -1,6 +1,6 @@
 # Contributing
 
-This document describes how to contribute to the `foc-mlx` project.
+This document describes how to develop and maintain the `foc-mlx` project.
 
 ## Development Setup
 
