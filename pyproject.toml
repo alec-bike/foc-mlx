@@ -12,6 +12,7 @@ dependencies = ["mlx>=0.32.2"]
 dev = [
   "pytest-cov>=7.1.0",
   "ruff>=0.16.8",
+  "taskipy>=1.14.1",
   "ty>=0.0.83",
 ]
 plot = [
@@ -39,6 +40,12 @@ extend-select = [
   "RET",  # flake8-return
   "TD",  # flake8-todos
 ]
+
+[tool.taskipy.tasks]
+all = "task ruff && task ty && task pytest"
+pytest = "pytest --cov"
+ruff = "ruff check && ruff format"
+ty = "ty check"
 
 [tool.uv]
 preview-features = true
