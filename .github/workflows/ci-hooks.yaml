@@ -30,13 +30,12 @@ jobs:
 
       - name: ruff
         run: |
-          uv run ruff check
-          uv run ruff format
+          uv run task ruff
 
       - name: ty
         run: |
-          uv run ty check src tests
+          uv run task ty
 
       - name: pytest
         run: |
-          uv run pytest --cov
+          uv run task pytest
