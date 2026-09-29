@@ -8,34 +8,29 @@ on:
 
 jobs:
   testing:
-    name: Setup and run hooks
+    name: Setup repository and run CI tasks
     runs-on: ubuntu-slim
 
+    strategy:
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+
     steps:
-      - name: Checkout foc-mlx codebase
+      - name: Checkout repository
         uses: actions/checkout@v7.0.1
 
       - name: Install uv
         uses: astral-sh/setup-uv@v10.2.0
         with:
           version: "latest"
-
-      - name: Setup python
-        run: uv python install
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
 
       - name: Install dependencies
         run: |
           uv sync
           uv pip install mlx-cpu
 
-      - name: ruff
+      - name: Run CI tasks
         run: |
-          uv run task ruff
-
-      - name: ty
-        run: |
-          uv run task ty
-
-      - name: pytest
-        run: |
-          uv run task pytest
+          uv run poe ci

@@ -19,7 +19,7 @@ Development dependencies:
 
 - `ruff` and `ty` for lint and type-check;
 - `pytest` for regression testing;
-- `taskipy` for task runners; and
+- `poethepoet` for running tasks;
 - `altair` and `polars` for the example plots.
 
 To sync all dependencies:
@@ -39,7 +39,7 @@ git switch -c <your-branch-name>
 Check your changes by running CI tasks locally:
 
 ```sh
-uv run task all
+uv run poe ci
 ```
 
 > [!TIP]

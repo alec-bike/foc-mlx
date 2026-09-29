@@ -6,21 +6,30 @@ readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
 license-files = ["LICENSE"]
-dependencies = ["mlx>=0.32.2"]
+dependencies = ["mlx>=0.32.3"]
 
 [dependency-groups]
 dev = [
   "altair>=6.3.0",
+  "poethepoet>=0.48.0",
   "polars[numpy]>=2.0.0rc2",
   "pytest-cov>=7.1.0",
   "ruff>=0.16.8",
-  "taskipy>=1.14.1",
   "ty>=0.0.83",
 ]
 
 [build-system]
 requires = ["uv_build>=0.12.0,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.poe.tasks]
+format = "ruff format"
+lint = "ruff check"
+ty = "ty check"
+pytest = "pytest -q"
+
+[tool.poe.tasks.ci]
+sequence = ["format", "lint", "ty", "pytest"]
 
 [tool.ruff]
 preview = true
@@ -38,12 +47,6 @@ extend-select = [
   "RET",  # flake8-return
   "TD",  # flake8-todos
 ]
-
-[tool.taskipy.tasks]
-all = "task ruff && task ty && task pytest"
-pytest = "pytest --cov"
-ruff = "ruff check && ruff format"
-ty = "ty check"
 
 [tool.uv]
 preview-features = true
