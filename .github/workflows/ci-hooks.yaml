@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv sync
+          uv sync --group tool
           uv pip install mlx-cpu
 
       - name: Run CI tasks

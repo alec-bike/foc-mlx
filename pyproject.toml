@@ -11,12 +11,10 @@ dependencies = ["mlx>=0.32.3"]
 [dependency-groups]
 dev = [
   "altair>=6.3.0",
-  "poethepoet>=0.48.0",
   "polars[numpy]>=2.0.0rc2",
   "pytest>=9.1.1",
-  "ruff>=0.16.8",
-  "ty>=0.0.83",
 ]
+tool = ["poethepoet", "ruff", "ty"]
 
 [build-system]
 requires = ["uv_build>=0.12.0,<0.13.0"]
