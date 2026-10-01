@@ -38,14 +38,9 @@ line-length = 100
 [tool.ruff.lint]
 pydocstyle.convention = "google"
 extend-select = [
-  # subset of lint rules[1]
-  "ANN",  # flake8-annotations
-  "C90",  # mccabe
-  "D",  # pydocstyle
-  "DOC",  # pydoclint
-  "I",  # isort
-  "RET",  # flake8-return
-  "TD",  # flake8-todos
+  "commented-out-code",
+  "pytest-incorrect-pytest-import",
+  "pytest-composite-assertion",
 ]
 
 [tool.uv]
