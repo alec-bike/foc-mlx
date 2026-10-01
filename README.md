@@ -12,7 +12,7 @@ cd foc-mlx
 ```
 
 > [!TIP]
-> This repository uses uv to manage dependencies. See [uv][1] for setup instructions.
+> This repository uses `uv` to manage dependencies. See [uv][1] for setup instructions.
 
 Sync all local dependencies:
 

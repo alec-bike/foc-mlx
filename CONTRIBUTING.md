@@ -15,7 +15,7 @@ cd foc-mlx
 
 Project dependencies are configured in `pyproject.toml`. The core dependency is `mlx`.
 
-Development dependencies:
+Development `dev` dependencies are:
 
 - `ruff` and `ty` for lint and type-check;
 - `pytest` for regression testing;
