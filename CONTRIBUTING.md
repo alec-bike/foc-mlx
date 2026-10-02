@@ -1,6 +1,6 @@
 # Contributing
 
-This document describes the steps to contribute to the `foc-mlx` codebase.
+This document describes how to develop and maintain the `foc-mlx` project.
 
 ## Development Setup
 
@@ -11,22 +11,25 @@ git clone git@github.com:YOUR-USERNAME/foc-mlx.git
 cd foc-mlx
 ```
 
-Project dependencies are configured in `pyproject.toml`. The only core dependency is `mlx`.
+### Dependencies
 
-Additional dev dependencies are:
+Project dependencies are configured in `pyproject.toml`. The core dependency is `mlx`.
 
-- altair and polars for the example plots;
-- ruff and ty for python linting and type checking;
-- pytest for testing.
+Development `dev` dependencies are:
 
-To sync dependencies:
+- `pytest` for regression testing;
+- `altair` and `polars` for the example plots.
+
+Optional `tool` dependencies are:
+
+- `poethepoet` for running tasks;
+- `ruff` and `ty` for lint and type-check;
+
+To sync all dependencies:
 
 ```sh
-uv sync
+uv sync --all-groups
 ```
-
-> [!TIP]
-> `uv sync` will also download python and create a virtual environment (if needed).
 
 ## Branch and Test
 
@@ -36,13 +39,17 @@ Create a new git branch to make changes to the repository:
 git switch -c <your-branch-name>
 ```
 
-Check your changes by running CI tests locally:
+Check your changes by running CI tasks locally:
 
 ```sh
-uv run ruff check
-uv run ruff format
-uv run ty check
-uv run pytest
+uv run poe ci
 ```
 
-If these all pass, push changes to the remote repository and follow the GitHub process to submit a PR for your branch.
+> [!TIP]
+> For testing on Linux, the `mlx-cpu` dependency is also needed:
+>
+> ```sh
+> uv pip install mlx-cpu
+> ```
+
+If these all pass, push your branch to the remote repository and follow the GitHub process to submit a PR.
