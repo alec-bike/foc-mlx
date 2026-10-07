@@ -18,14 +18,14 @@ Project dependencies are configured in `pyproject.toml`. The core dependency is 
 Development `dev` dependencies are:
 
 - `pytest` for regression testing;
-- `altair` and `polars` for the example plots.
 
-Optional `tool` dependencies are:
+Optional dependencies are:
 
-- `poethepoet` for running tasks;
 - `ruff` and `ty` for lint and type-check;
+- `poethepoet` for running tasks;
+- `altair` and `polars` for the example plots;
 
-To sync all dependencies:
+Sync all dependencies:
 
 ```sh
 uv sync --all-groups
