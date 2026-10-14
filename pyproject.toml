@@ -10,7 +10,7 @@ dependencies = ["mlx>=0.32.3"]
 
 [dependency-groups]
 dev = ["pytest>=9.1"]
-plot = ["altair", "polars[numpy]"]
+opt = ["altair", "polars[numpy]"]
 tool = ["poethepoet", "ruff", "ty"]
 
 [build-system]
@@ -20,7 +20,7 @@ build-backend = "uv_build"
 [tool.poe.tasks]
 format = "ruff format"
 lint = "ruff check"
-ty = "ty check src tests -v"
+ty = "ty check src tests"
 pytest = "pytest -v"
 
 [tool.poe.tasks.ci]

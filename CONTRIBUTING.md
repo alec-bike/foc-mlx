@@ -1,6 +1,6 @@
 # Contributing
 
-This document describes how to develop and maintain the `foc-mlx` project.
+This document describes how to make changes to the `foc-mlx` project.
 
 ## Development Setup
 
@@ -13,17 +13,13 @@ cd foc-mlx
 
 ### Dependencies
 
-Project dependencies are configured in `pyproject.toml`. The core dependency is `mlx`.
+Project dependencies are configured in `pyproject.toml`. The only core dependency is `mlx`.
 
-Development `dev` dependencies are:
+Development dependencies:
 
 - `pytest` for regression testing;
-
-Optional dependencies are:
-
-- `ruff` and `ty` for lint and type-check;
-- `poethepoet` for running tasks;
-- `altair` and `polars` for the example plots;
+- `ruff`, `ty` and `poethepoet` for CI testing;
+- `altair` and `polars` for the example plots.
 
 Sync all dependencies:
 
