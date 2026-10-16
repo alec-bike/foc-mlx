@@ -20,9 +20,7 @@ Sync all local dependencies:
 uv sync
 ```
 
-Refer to the [Function Reference](docs/api.md) for the `foc-mlx` python API.
-
-## Examples
+## Example
 
 Calculate the Clarke transform:
 
@@ -37,20 +35,27 @@ i_alpha, i_beta = clarke(i_a, i_b)
 print(i_alpha)
 ```
 
-Plot FOC waveforms:
+## Next Steps
+
+The [Function Reference](docs/api.md) describes the `foc-mlx` python API. An example script is also provided in `examples/transforms.py`, which applies the transforms and generates a plot of FOC waveforms.
+
+Install optional dependencies for the example plots:
+
+```sh
+uv sync --all-groups
+```
+
+Run the example script:
 
 ```sh
 uv run examples/transforms.py
 ```
 
-> [!TIP]
-> Running the examples works best in an interactive notebook such as Colab or Jupyter.
-
 ![FOC Waveforms.](examples/transforms.svg)
 
-## Next Steps
+## Development
 
-To contribute to the codebase, see [Contributing](CONTRIBUTING.md).
+To make changes to the codebase, see [Contributing](CONTRIBUTING.md).
 
 <!-- links -->
 
