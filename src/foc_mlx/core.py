@@ -167,7 +167,7 @@ def duty_cycle(v: array, v_bus: float) -> array:
         msg = "Invalid array size."
         raise ValueError(msg)
 
-    if v_bus <= 0:
+    if not (v_bus > 0):
         msg = "Invalid bus voltage."
         raise ValueError(msg)
 
