@@ -39,12 +39,6 @@ print(i_alpha)
 
 The [Function Reference](docs/api.md) describes the `foc-mlx` python API. An example script is also provided in `examples/transforms.py`, which applies the transforms and generates a plot of FOC waveforms.
 
-Install optional dependencies for the example plots:
-
-```sh
-uv sync --all-groups
-```
-
 Run the example script:
 
 ```sh
