@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["altair","polars[numpy]","foc_mlx"]
+#
+# [tool.uv.sources]
+# foc_mlx = { path = ".." }
+# ///
 """Example script to plot Field Oriented Control (FOC) core transforms.
 
 Run the core transforms to convert between 3-phase motor space and
@@ -15,7 +22,7 @@ from polars import DataFrame
 from foc_mlx import clarke, inv_clarke, inv_park, park, svm
 
 
-def _line_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
+def _df_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
     """Helper function to generate Chart from DataFrame.
 
     Match columns by regex selector, unpivot from wide to long format.
@@ -113,9 +120,9 @@ def plot_foc() -> VConcatChart:
     df = df.with_columns([(-pl.col("i_a") - pl.col("i_b")).alias("i_c")])
 
     return (
-        _line_chart(df, "i[_].", "theta", "current (Amp)")
-        & _line_chart(df, "V[_].", "theta", "voltage (Volt)")
-        & _line_chart(df, "T[_].", "theta", "duty cycle")
+        _df_chart(df, "i[_].", "theta", "current (Amp)")
+        & _df_chart(df, "V[_].", "theta", "voltage (Volt)")
+        & _df_chart(df, "T[_].", "theta", "duty cycle")
     )
 
 
