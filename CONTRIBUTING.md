@@ -7,6 +7,7 @@ This document describes how to make changes to the `foc-mlx` project.
 Fork the `foc-mlx` repository on GitHub and clone locally:
 
 ```sh
+git lfs install
 git clone git@github.com:YOUR-USERNAME/foc-mlx.git
 cd foc-mlx
 ```
