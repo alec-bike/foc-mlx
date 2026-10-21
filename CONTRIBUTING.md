@@ -18,7 +18,7 @@ Project dependencies are configured in `pyproject.toml`. The only core dependenc
 Development dependencies:
 
 - `pytest` for regression testing;
-- optionally, `ruff` and `poethepoet` for CI testing.
+- (optionally) `ruff`, `ty` and `poethepoet` for CI testing.
 
 Sync all dependencies:
 

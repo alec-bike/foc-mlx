@@ -10,7 +10,7 @@ dependencies = ["mlx>=0.32.4"]
 
 [dependency-groups]
 dev = ["pytest>=9.1"]
-tool = ["poethepoet", "ruff"]
+tool = ["poethepoet", "ruff", "ty"]
 
 [build-system]
 requires = ["uv_build>=0.13.0,<0.14.0"]
