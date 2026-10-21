@@ -40,7 +40,7 @@ extend-select = [
 ]
 
 [tool.ty]
-analysis.return-type-inference = "always"
+# analysis.return-type-inference = "always"
 
 [tool.uv]
 preview-features = true
