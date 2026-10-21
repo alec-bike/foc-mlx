@@ -22,13 +22,17 @@ def test_clarke() -> None:
     assert mx.isclose(i_alpha, ZERO)
     assert mx.isclose(i_beta, -ONE)
 
-    # ensure assertion error raised for empty input array
+    # ensure error raised for empty input array
     with pytest.raises(ValueError):
         _ = clarke(EMPTY, i_b)
 
-    # ensure assertion error raised for mismatched size inputs
+    # ensure error raised for mismatched size inputs
     with pytest.raises(ValueError):
         _ = clarke(array([0, 1]), i_b)
+
+    # ensure error raised for incorrect input type
+    with pytest.raises(AttributeError):
+        _ = clarke(0.0, i_b)  # ty: ignore
 
 
 def test_park() -> None:
@@ -40,9 +44,13 @@ def test_park() -> None:
     assert mx.isclose(i_d, -INV_SQRT2)
     assert mx.isclose(i_q, -INV_SQRT2)
 
-    # ensure assertion error raised for empty input array
+    # ensure error raised for empty input array
     with pytest.raises(ValueError):
         _ = park(EMPTY, i_beta, theta)
+
+    # ensure error raised for incorrect input type
+    with pytest.raises(AttributeError):
+        _ = park(0.0, i_beta, theta)  # ty: ignore
 
 
 def test_inv_clarke() -> None:
@@ -54,7 +62,7 @@ def test_inv_clarke() -> None:
     assert mx.isclose(v_b, array(0.5))
     assert mx.isclose(v_c, array(0.5))
 
-    # ensure assertion error raised for empty input array
+    # ensure error raised for empty input array
     with pytest.raises(ValueError):
         _ = inv_clarke(EMPTY, v_beta)
 
@@ -68,7 +76,7 @@ def test_inv_park() -> None:
     assert mx.isclose(v_alpha, -INV_SQRT2)
     assert mx.isclose(v_beta, INV_SQRT2)
 
-    # ensure assertion error raised for empty input array
+    # ensure error raised for empty input array
     with pytest.raises(ValueError):
         _ = inv_park(EMPTY, v_q, theta)
 
@@ -104,15 +112,15 @@ def test_duty_cycle() -> None:
     t_out = duty_cycle(v_in, v_bus)
     assert mx.isclose(t_out, array(1.0))
 
-    # ensure assertion error raised when v_bus is zero
+    # ensure error raised when v_bus is zero
     with pytest.raises(ValueError):
         _ = duty_cycle(v_in, 0)
 
-    # ensure assertion error raised when v_bus is NaN
+    # ensure error raised when v_bus is NaN
     with pytest.raises(ValueError):
         _ = duty_cycle(v_in, mx.nan)
 
-    # ensure assertion error raised for empty input array
+    # ensure error raised for empty input array
     with pytest.raises(ValueError):
         _ = duty_cycle(EMPTY, v_bus)
 
@@ -130,6 +138,6 @@ def test_svm() -> None:
     assert mx.isclose(t_b, array(0.375))
     assert mx.isclose(t_c, array(0.625))
 
-    # ensure assertion error raised for empty input array
+    # ensure error raised for empty input array
     with pytest.raises(ValueError):
         _ = svm(EMPTY, v_b, v_c, v_bus)
