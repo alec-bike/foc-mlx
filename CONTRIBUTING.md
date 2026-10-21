@@ -13,17 +13,23 @@ cd foc-mlx
 
 ### Dependencies
 
-Project dependencies are configured in `pyproject.toml`. The only core dependency is `mlx`.
+Project dependencies are configured in `pyproject.toml`. The core dependency is `mlx`.
 
 Development dependencies:
 
-- `pytest` for regression testing;
-- (optionally) `ruff`, `ty` and `poethepoet` for CI testing.
+- `pytest` for regression testing; and
+- `poethepoet` for running tasks.
 
 Sync all dependencies:
 
 ```sh
-uv sync --all-groups
+uv sync
+```
+
+Install `ruff` for python lint and format:
+
+```sh
+uv tool install ruff
 ```
 
 ## Branch and Test
