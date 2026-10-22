@@ -20,8 +20,7 @@ Project dependencies are configured in `pyproject.toml`. The core dependency is 
 
 Development dependencies:
 
-- `pytest` for regression testing; and
-- `poethepoet` for running tasks.
+- `pytest` for regression testing.
 
 Sync all dependencies:
 
@@ -29,9 +28,13 @@ Sync all dependencies:
 uv sync
 ```
 
-Install `ruff` for python lint and format:
+Install system tools:
+
+- `ruff` for python lint and format; and
+- `poethepoet` for running tasks.
 
 ```sh
+uv tool install poethepoet
 uv tool install ruff
 ```
 
@@ -46,7 +49,7 @@ git switch -c <your-branch-name>
 Check your changes by running CI tasks locally:
 
 ```sh
-uv run poe ci
+poe ci
 ```
 
 > [!TIP]

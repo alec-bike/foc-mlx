@@ -29,8 +29,10 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync
-          uv pip install ruff mlx-cpu
+          uv pip install mlx-cpu
+          uv tool install poethepoet
+          uv tool install ruff
 
       - name: Run CI tasks
         run: |
-          uv run poe ci
+          poe ci
