@@ -1,6 +1,6 @@
 # Field Oriented Control
 
-The `foc-mlx` library implements power-variant Field Oriented Control core transforms (Park, Clarke) with Space Vector Modulation (SVM). It uses `mlx` for array operations optimized for Apple Silicon.
+The `foc-mlx` python library implements the power-variant Field Oriented Control core transforms (Park, Clarke) with Space Vector Modulation (SVM). It uses `mlx` for array operations optimized for Apple Silicon.
 
 ## Getting Started
 
@@ -20,9 +20,19 @@ Sync all local dependencies:
 uv sync
 ```
 
-## Example
+Run the example script to generate FOC waveforms:
 
-Calculate the Clarke transform:
+```sh
+uv run examples/transforms.py
+```
+
+![FOC Waveforms.](examples/transforms.svg)
+
+## Next Steps
+
+Look through the [Function Reference](docs/api.md) which describes the `foc-mlx` python API.
+
+An example of using the API to calculate the Clarke transform:
 
 ```python
 from mlx.core import linspace, sin, pi
@@ -35,21 +45,9 @@ i_alpha, i_beta = clarke(i_a, i_b)
 print(i_alpha)
 ```
 
-## Next Steps
-
-The [Function Reference](docs/api.md) describes the `foc-mlx` python API. An example script is also provided in `examples/transforms.py`, which applies the transforms and generates a plot of FOC waveforms.
-
-Run the example script:
-
-```sh
-uv run examples/transforms.py
-```
-
-![FOC Waveforms.](examples/transforms.svg)
-
 ## Development
 
-To make changes to the codebase, see [Contributing](CONTRIBUTING.md).
+To develop and test the codebase, see [Contributing](CONTRIBUTING.md).
 
 <!-- links -->
 
