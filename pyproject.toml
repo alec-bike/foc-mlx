@@ -19,7 +19,7 @@ requires = ["uv_build>=0.13.0,<0.14.0"]
 build-backend = "uv_build"
 
 [tool.poe.tasks]
-format = "uv format --check"
+format = "ruff format --check"
 lint = "ruff check"
 type = "uv check"
 pytest = "pytest -v"

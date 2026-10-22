@@ -29,8 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync
-          uv tool install ruff
-          uv pip install mlx-cpu
+          uv pip install ruff mlx-cpu
 
       - name: Run CI tasks
         run: |
