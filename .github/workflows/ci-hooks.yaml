@@ -8,7 +8,7 @@ on:
 
 jobs:
   testing:
-    name: Setup repository and run CI tasks
+    name: Setup repository and run tasks
     runs-on: ubuntu-slim
 
     strategy:
@@ -30,9 +30,11 @@ jobs:
         run: |
           uv sync
           uv pip install mlx-cpu
-          uv tool install poethepoet
           uv tool install ruff
 
-      - name: Run CI tasks
+      - name: Run tasks
         run: |
-          poe ci
+          ruff format --check
+          ruff check
+          uv check
+          uv run pytest

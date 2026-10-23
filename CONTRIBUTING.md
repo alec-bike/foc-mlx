@@ -31,11 +31,9 @@ uv sync
 
 Install system tools:
 
-- `ruff` for python lint and format; and
-- `poethepoet` for running tasks.
+- `ruff` for python lint and format
 
 ```sh
-uv tool install poethepoet
 uv tool install ruff
 ```
 
@@ -47,10 +45,13 @@ Create a new git branch to make changes to the repository:
 git switch -c <your-branch-name>
 ```
 
-Check your changes by running CI tasks locally:
+Check your changes by running the equivalent CI tests:
 
 ```sh
-poe ci
+ruff format --check
+ruff check
+uv check -v
+uv run pytest
 ```
 
 > [!TIP]
