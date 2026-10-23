@@ -6,28 +6,18 @@ readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
 license-files = ["LICENSE"]
-dependencies = ["mlx>=0.32.3"]
+dependencies = ["mlx>=0.32.4"]
 
 [dependency-groups]
 dev = [
-  "altair>=6.3.0",
-  "polars[numpy]>=2.0.0rc2",
-  "pytest>=9.1.1",
+    "altair>=6.3.0",
+    "polars[numpy]>=2.0.0",
+    "pytest>=9.1",
 ]
-tool = ["poethepoet", "ruff", "ty"]
 
 [build-system]
-requires = ["uv_build>=0.12.0,<0.13.0"]
+requires = ["uv_build>=0.13.0,<0.14.0"]
 build-backend = "uv_build"
-
-[tool.poe.tasks]
-format = "ruff format"
-lint = "ruff check"
-ty = "ty check"
-pytest = "pytest -q"
-
-[tool.poe.tasks.ci]
-sequence = ["format", "lint", "ty", "pytest"]
 
 [tool.ruff]
 preview = true
@@ -43,6 +33,3 @@ extend-select = [
 
 [tool.uv]
 preview-features = true
-audit.malware-check = true
-
-# [1]: https://docs.astral.sh/ruff/rules

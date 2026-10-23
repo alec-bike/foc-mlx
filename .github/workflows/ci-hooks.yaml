@@ -8,19 +8,19 @@ on:
 
 jobs:
   testing:
-    name: Setup repository and run CI tasks
+    name: Setup repository and run tasks
     runs-on: ubuntu-slim
 
     strategy:
       matrix:
-        python-version: ["3.12", "3.13", "3.14"]
+        python-version: ["3.12", "3.13", "3.14", "3.15"]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v10.2.0
+        uses: astral-sh/setup-uv@v10.3.2
         with:
           version: "latest"
           python-version: ${{ matrix.python-version }}
@@ -28,9 +28,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv sync --group tool
+          uv sync
           uv pip install mlx-cpu
+          uv tool install ruff
 
-      - name: Run CI tasks
+      - name: Run tasks
         run: |
-          uv run poe ci
+          ruff format --check
+          ruff check
+          uv check
+          uv run pytest

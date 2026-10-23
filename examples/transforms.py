@@ -5,16 +5,17 @@ Run the core transforms to convert between 3-phase motor space and
 to plot the resultant waveforms.
 """
 
+import altair as alt
 import mlx.core as mx
 import numpy as np
-from altair import Chart, VConcatChart, renderers
-from polars import DataFrame, col
-from polars.selectors import matches
+import polars as pl
+from altair import Chart, VConcatChart
+from polars import DataFrame
 
 from foc_mlx import clarke, inv_clarke, inv_park, park, svm
 
 
-def _line_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
+def _df_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
     """Helper function to generate Chart from DataFrame.
 
     Match columns by regex selector, unpivot from wide to long format.
@@ -34,7 +35,7 @@ def _line_chart(df: DataFrame, regex: str, idx: str, ylab: str) -> Chart:
     return (
         Chart(
             df.unpivot(
-                on=matches(regex),
+                on=pl.selectors.matches(regex),
                 index=idx,
                 value_name=ylab,
                 variable_name=grplab,
@@ -109,16 +110,16 @@ def plot_foc() -> VConcatChart:
     df = sim_foc()  # generate waveforms
 
     # Add i_c column using 3-phase relation: i_a + i_b + i_c == 0.
-    df = df.with_columns([(-col("i_a") - col("i_b")).alias("i_c")])
+    df = df.with_columns([(-pl.col("i_a") - pl.col("i_b")).alias("i_c")])
 
     return (
-        _line_chart(df, "i[_].", "theta", "current (Amp)")
-        & _line_chart(df, "V[_].", "theta", "voltage (Volt)")
-        & _line_chart(df, "T[_].", "theta", "duty cycle")
+        _df_chart(df, "i[_].", "theta", "current (Amp)")
+        & _df_chart(df, "V[_].", "theta", "voltage (Volt)")
+        & _df_chart(df, "T[_].", "theta", "duty cycle")
     )
 
 
 if __name__ == "__main__":
     # Display plots as interactive html in browser
-    renderers.enable("browser")
+    alt.renderers.enable("browser")
     plot_foc().show()
