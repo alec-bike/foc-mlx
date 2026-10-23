@@ -26,7 +26,7 @@ Run the example script to generate FOC waveforms:
 uv run examples/transforms.py
 ```
 
-![FOC Waveforms.](examples/transforms.svg)
+![FOC Waveforms.](docs/transforms.svg)
 
 ## Next Steps
 

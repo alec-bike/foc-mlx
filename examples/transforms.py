@@ -1,10 +1,3 @@
-# /// script
-# requires-python = ">=3.12"
-# dependencies = ["altair","polars[numpy]","foc_mlx"]
-#
-# [tool.uv.sources]
-# foc_mlx = { path = ".." }
-# ///
 """Example script to plot Field Oriented Control (FOC) core transforms.
 
 Run the core transforms to convert between 3-phase motor space and

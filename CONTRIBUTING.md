@@ -20,7 +20,8 @@ Project dependencies are configured in `pyproject.toml`. The core dependency is 
 
 Development dependencies:
 
-- `pytest` for regression testing.
+- `pytest` for regression testing;
+- `altair` and `polars` for example plots.
 
 Sync all dependencies:
 

@@ -9,7 +9,11 @@ license-files = ["LICENSE"]
 dependencies = ["mlx>=0.32.4"]
 
 [dependency-groups]
-dev = ["pytest>=9.1"]
+dev = [
+    "altair>=6.3.0",
+    "polars[numpy]>=2.0.0",
+    "pytest>=9.1",
+]
 
 [build-system]
 requires = ["uv_build>=0.13.0,<0.14.0"]
