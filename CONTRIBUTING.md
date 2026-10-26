@@ -18,23 +18,16 @@ cd foc-mlx
 
 Project dependencies are configured in `pyproject.toml`. The core dependency is `mlx`.
 
-Development dependencies:
+Development `dev` dependencies:
 
 - `pytest` for regression testing;
-- `altair` and `polars` for example plots.
+- `ruff` and `ty` for python code checking;
+- `altair` and `polars` for the example plots.
 
 Sync all dependencies:
 
 ```sh
 uv sync
-```
-
-Install system tools:
-
-- `ruff` for python lint and format
-
-```sh
-uv tool install ruff
 ```
 
 ## Branch and Test
@@ -48,9 +41,9 @@ git switch -c <your-branch-name>
 Check your changes by running the equivalent CI tests:
 
 ```sh
-ruff format --check
-ruff check
-uv check -v
+uv run ruff format --check
+uv run ruff check
+uv run ty check -v
 uv run pytest
 ```
 

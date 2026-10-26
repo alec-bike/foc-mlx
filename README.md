@@ -20,7 +20,7 @@ Sync all local dependencies:
 uv sync
 ```
 
-Run the example script to generate FOC waveforms:
+Run the example script and plot some FOC waveforms:
 
 ```sh
 uv run examples/transforms.py

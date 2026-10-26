@@ -10,9 +10,11 @@ dependencies = ["mlx>=0.32.4"]
 
 [dependency-groups]
 dev = [
-    "altair>=6.3.0",
-    "polars[numpy]>=2.0.0",
-    "pytest>=9.1",
+  "altair>=6.3",
+  "polars[numpy]>=2.1",
+  "pytest>=9.1",
+  "ruff>=0.17",
+  "ty>=0.0.92",
 ]
 
 [build-system]
