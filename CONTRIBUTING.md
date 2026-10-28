@@ -43,7 +43,7 @@ Check your changes by running the equivalent CI tests:
 ```sh
 uv run ruff format --check
 uv run ruff check
-uv run ty check -v
+uv run ty check
 uv run pytest
 ```
 
