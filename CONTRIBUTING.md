@@ -1,8 +1,11 @@
 # Contributing
 
-This document describes how to develop and maintain the `foc-mlx` project.
+This document describes how to make changes to the `foc-mlx` project.
 
 ## Development Setup
+
+> [!TIP]
+> Ensure that [git-lfs][1] is installed and initialized.
 
 Fork the `foc-mlx` repository on GitHub and clone locally:
 
@@ -15,20 +18,16 @@ cd foc-mlx
 
 Project dependencies are configured in `pyproject.toml`. The core dependency is `mlx`.
 
-Development `dev` dependencies are:
+Development `dev` dependencies:
 
 - `pytest` for regression testing;
+- `ruff` and `ty` for python code checking;
 - `altair` and `polars` for the example plots.
 
-Optional `tool` dependencies are:
-
-- `poethepoet` for running tasks;
-- `ruff` and `ty` for lint and type-check;
-
-To sync all dependencies:
+Sync all dependencies:
 
 ```sh
-uv sync --all-groups
+uv sync
 ```
 
 ## Branch and Test
@@ -39,10 +38,19 @@ Create a new git branch to make changes to the repository:
 git switch -c <your-branch-name>
 ```
 
-Check your changes by running CI tasks locally:
+Check that `uv.lock` is up-to-date:
 
 ```sh
-uv run poe ci
+uv lock --check
+```
+
+Check your changes by running the equivalent CI tests:
+
+```sh
+uv run ruff format --check
+uv run ruff check
+uv run ty check
+uv run pytest
 ```
 
 > [!TIP]
@@ -53,3 +61,7 @@ uv run poe ci
 > ```
 
 If these all pass, push your branch to the remote repository and follow the GitHub process to submit a PR.
+
+<!-- links -->
+
+[1]: https://git-lfs.com

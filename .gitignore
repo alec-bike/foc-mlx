@@ -1,7 +1,5 @@
 .coverage
 .DS_Store
-.pytest_cache
-.ruff_cache
 .venv
 .zed
 __pycache__

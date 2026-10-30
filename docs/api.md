@@ -13,7 +13,7 @@ Field Oriented Control core transforms.
 Functions:
 
 - [clarke](#coreclarke) – Clarke Transform, power variant form.
-- [duty_cycle](#coreduty_cycle) – convert phase voltage to duty cycle.
+- [duty_cycle](#coreduty_cycle) – Convert phase voltage to duty cycle.
 - [inv_clarke](#coreinv_clarke) – Inverse Clarke Transform, power variant form.
 - [inv_park](#coreinv_park) – Inverse Park Transform.
 - [park](#corepark) – Park Transform.
@@ -49,6 +49,7 @@ Returns:
 
 Raises:
 
+- `AttributeError` – invalid input type.
 - `ValueError` – invalid array size.
 
 ### core.duty_cycle
@@ -70,13 +71,14 @@ Returns:
 
 Raises:
 
+- `AttributeError` – invalid input type.
 - `ValueError` – invalid array size or invalid bus voltage.
 
 Notes:
 
-- Input phase voltage `v` is signed.
-- Output duty cycle `t` is between 0 and 1 (0.5 is zero output voltage).
+- Input phase voltage `v` is signed. Input bus voltage `v_bus` must be greater than zero.
 - Absolute input voltages greater than `v_bus` are clipped.
+- Output duty cycle `t` is between 0 and 1 (0.5 is zero output voltage).
 
 ### core.inv_clarke
 
@@ -99,6 +101,7 @@ Returns:
 
 Raises:
 
+- `AttributeError` – invalid input type.
 - `ValueError` – invalid array size.
 
 ### core.inv_park
@@ -122,6 +125,7 @@ Returns:
 
 Raises:
 
+- `AttributeError` – invalid input type.
 - `ValueError` – invalid array size.
 
 ### core.park
@@ -147,6 +151,7 @@ Returns:
 
 Raises:
 
+- `AttributeError` – invalid input type.
 - `ValueError` – invalid array size.
 
 ### core.svm
@@ -174,4 +179,5 @@ Returns:
 
 Raises:
 
-- `ValueError` – invalid array size.
+- `AttributeError` – invalid input type.
+- `ValueError` – invalid array size or invalid bus voltage.

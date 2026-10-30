@@ -3,10 +3,12 @@
 Power variant forms of the Park/Clarke transforms and Space Vector Modulation.
 """
 
+import math
+
 import mlx.core as mx
 from mlx.core import array
 
-SQRT3: array = mx.sqrt(array(3.0))
+_SQRT3 = math.sqrt(3.0)
 
 
 def clarke(i_a: array, i_b: array) -> tuple[array, array]:
@@ -24,6 +26,7 @@ def clarke(i_a: array, i_b: array) -> tuple[array, array]:
         i_beta: beta current array.
 
     Raises:
+        AttributeError: invalid input type.
         ValueError: invalid array size.
     """
     if (i_a.size <= 0) or (i_a.size != i_b.size):
@@ -31,7 +34,7 @@ def clarke(i_a: array, i_b: array) -> tuple[array, array]:
         raise ValueError(msg)
 
     i_alpha = i_a  # alpha frame aligned with a-phase
-    i_beta = (i_a + 2 * i_b) / SQRT3
+    i_beta = (i_a + 2 * i_b) / _SQRT3
     return i_alpha, i_beta
 
 
@@ -43,13 +46,14 @@ def park(i_alpha: array, i_beta: array, theta: array) -> tuple[array, array]:
     Parameters:
         i_alpha: alpha current array.
         i_beta: beta current array.
-        theta: motor electrical angle array (radian).
+        theta: motor electrical angle array in radian.
 
     Returns:
         i_d: direct current array.
         i_q: quadrature current array.
 
     Raises:
+        AttributeError: invalid input type.
         ValueError: invalid array size.
     """
     if (i_alpha.size <= 0) or (i_alpha.size != i_beta.size) or (i_beta.size != theta.size):
@@ -74,6 +78,7 @@ def inv_clarke(v_alpha: array, v_beta: array) -> tuple[array, array, array]:
         v_c: C-phase voltage array.
 
     Raises:
+        AttributeError: invalid input type.
         ValueError: invalid array size.
     """
     if (v_alpha.size <= 0) or (v_alpha.size != v_beta.size):
@@ -81,8 +86,8 @@ def inv_clarke(v_alpha: array, v_beta: array) -> tuple[array, array, array]:
         raise ValueError(msg)
 
     v_a = v_alpha
-    v_b = (-v_alpha + SQRT3 * v_beta) / 2
-    v_c = (-v_alpha - SQRT3 * v_beta) / 2
+    v_b = (-v_alpha + _SQRT3 * v_beta) / 2
+    v_c = (-v_alpha - _SQRT3 * v_beta) / 2
     return v_a, v_b, v_c
 
 
@@ -92,13 +97,14 @@ def inv_park(v_d: array, v_q: array, theta: array) -> tuple[array, array]:
     Parameters:
         v_d: direct voltage array.
         v_q: quadrature voltage array.
-        theta: motor electrical angle array (radian).
+        theta: motor electrical angle array in radian.
 
     Returns:
         v_alpha: alpha voltage array.
         v_beta: beta voltage array.
 
     Raises:
+        AttributeError: invalid input type.
         ValueError: invalid array size.
     """
     if (v_d.size <= 0) or (v_d.size != v_q.size) or (v_q.size != theta.size):
@@ -127,7 +133,8 @@ def svm(v_a: array, v_b: array, v_c: array, v_bus: float) -> tuple[array, array,
         t_c: C-phase duty cycle array.
 
     Raises:
-        ValueError: invalid array size.
+        AttributeError: invalid input type.
+        ValueError: invalid array size or invalid bus voltage.
     """
     if (v_a.size <= 0) or (v_a.size != v_b.size) or (v_b.size != v_c.size):
         msg = "Invalid array size."
@@ -149,9 +156,9 @@ def duty_cycle(v: array, v_bus: float) -> array:
     """Convert phase voltage to duty cycle.
 
     Note:
-        - Input phase voltage `v` is signed.
+        - Input phase voltage `v` is signed. Input bus voltage `v_bus` must be greater than zero.
+        - Absolute input voltages greater than `v_bus` are clipped.
         - Output duty cycle `t` is between 0 and 1 (0.5 is zero output voltage).
-        - Absolute input voltages greater than the bus voltage `v_bus` are clipped.
 
     Parameters:
         v: input voltage array.
@@ -161,13 +168,14 @@ def duty_cycle(v: array, v_bus: float) -> array:
         t: duty cycle array.
 
     Raises:
+        AttributeError: invalid input type.
         ValueError: invalid array size or invalid bus voltage.
     """
     if v.size <= 0:
         msg = "Invalid array size."
         raise ValueError(msg)
 
-    if v_bus <= 0:
+    if not (v_bus > 0):
         msg = "Invalid bus voltage."
         raise ValueError(msg)
 
