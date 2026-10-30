@@ -14,11 +14,11 @@ dev = [
   "polars[numpy]>=2.1",
   "pytest>=9.2",
   "ruff>=0.17",
-  "ty>=0.0.93",
+  "ty>=0.0.95",
 ]
 
 [build-system]
-requires = ["uv_build>=0.13.0,<0.14.0"]
+requires = ["uv_build>=0.13,<0.14"]
 build-backend = "uv_build"
 
 [tool.ruff]
@@ -32,6 +32,9 @@ extend-select = [
   "pytest-incorrect-pytest-import",
   "pytest-composite-assertion",
 ]
+
+[tool.ty]
+environment.python-version = "3.12"
 
 [tool.uv]
 preview-features = true

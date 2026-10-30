@@ -38,6 +38,12 @@ Create a new git branch to make changes to the repository:
 git switch -c <your-branch-name>
 ```
 
+Check that `uv.lock` is up-to-date:
+
+```sh
+uv lock --check
+```
+
 Check your changes by running the equivalent CI tests:
 
 ```sh
