@@ -112,14 +112,13 @@ def plot_foc() -> VConcatChart:
     # Add i_c column using 3-phase relation: i_a + i_b + i_c == 0.
     df = df.with_columns([(-pl.col("i_a") - pl.col("i_b")).alias("i_c")])
 
-    return (
+    return (  # fmt: skip
         _df_chart(df, "i[_].", "theta", "current (Amp)")
-        & _df_chart(df, "V[_].", "theta", "voltage (Volt)")
         & _df_chart(df, "T[_].", "theta", "duty cycle")
     )
 
 
 if __name__ == "__main__":
-    # Display plots as interactive html in browser
+    # Display html plot in browser
     alt.renderers.enable("browser")
     plot_foc().show()
