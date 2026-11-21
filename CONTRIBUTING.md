@@ -4,9 +4,6 @@ This document describes how to make changes to the `foc-mlx` project.
 
 ## Development Setup
 
-> [!TIP]
-> Ensure that [git-lfs][1] is installed and initialized.
-
 Fork the `foc-mlx` repository on GitHub and clone locally:
 
 ```sh
@@ -63,5 +60,3 @@ uv run pytest
 If these all pass, push your branch to the remote repository and follow the GitHub process to submit a PR.
 
 <!-- links -->
-
-[1]: https://git-lfs.com
